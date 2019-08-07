@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>RPS-Multiplayer</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- style.css link -->
+    <link rel = "stylesheet" type = "text/css" href = "./assets/css/style.css"/>
+    
+    <!-- Firebase References -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
+
+  </head>
+  <body>
+    
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <div class="container">
+            <br>
+    
+        <!-- Jumbotron Title -->
+        <div class="jumbotron">
+            <h1 class="text-center">Welcome to RPS-Multiplayer</h1>
+        </div>
+
+
+        <!-- Name and Selection -->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card card-default">
+                    <div class="card-header">Player #1</div>
+                    <div class="card-body">
+                    <form>
+
+                        <div class="form-group row">
+                            <label for="player1-name">Your Name</label>
+                            <input class="form-control" id="player1-name" type="text">
+                        </div>
+                        
+                        <!-- Rock, Paper, Scissors  -->  
+                        <div class="btn_class">
+                            <label>
+                                <input type="radio" name="player1-test" value="rock" checked>
+                                <img id="rockIcon" src="./assets/images/icons8-rock-100.png">
+                            </label>
+                                  
+                            <label>
+                                <input type="radio" name="player1-test" value="scissor" >
+                                <img id="scissorIcon" src="./assets/images/icons8-cutting-100.png">
+                            </label>
+                            
+                            <label>
+                                <input type="radio" name="player1-test" value="paper" >
+                                <img id="paperIcon" src="./assets/images/icons8-matt-paper-100.png">
+                            </label>
+                        </div>
+
+                        
+
+
+                        <button class="btn btn-primary" id="player1-submit" type="submit">Submit</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Panel -->
+            <div class="col-lg-4">
+                <div class="card card-default">
+                    <div class="card-header">Result</div>
+                    <div class="card-body">
+                        <div id="game-result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Name and Selection -->
+            <div class="col-lg-4">
+                <div class="card card-default">
+                    <div class="card-header">Player #2</div>
+                    <div class="card-body">
+                    <form>
+
+                        <div class="form-group row">
+                            <label for="player2-name">Your Name</label>
+                            <input class="form-control" id="player2-name" type="text">
+                        </div>
+                        
+                        <!-- Rock, Paper, Scissors  -->  
+                        <div class="btn_class">
+                            <label>
+                                <input type="radio" name="player2-test" value="rock" checked>
+                                <img id="rockIcon" src="./assets/images/icons8-rock-100.png">
+                            </label>
+                                    
+                            <label>
+                                <input type="radio" name="player2-test" value="scissor" >
+                                <img id="scissorIcon" src="./assets/images/icons8-cutting-100.png">
+                            </label>
+                            
+                            <label>
+                                <input type="radio" name="player2-test" value="paper" >
+                                <img id="paperIcon" src="./assets/images/icons8-matt-paper-100.png">
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" id="player2-submit" type="submit">Submit</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+
+
+
+        
+    </div>
+
+            
+
+
+
+    
+    <!-- Shows How many players are playing this game -->
+    <!-- <span id="number-of-players"></span> -->
+    
+    
+
+    <script src="assets/javascript/app.js"></script>
+  </body>
+</html>
