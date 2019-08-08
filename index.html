@@ -28,7 +28,7 @@
 
 
     <div class="container">
-            <br>
+        <br>
     
         <!-- Jumbotron Title -->
         <div class="jumbotron">
@@ -42,6 +42,9 @@
                 <div class="card card-default">
                     <div class="card-header">Player #1</div>
                     <div class="card-body">
+
+                    <div id="player1-selected"></div>
+                    
                     <form>
 
                         <div class="form-group row">
@@ -71,9 +74,14 @@
 
 
                         <button class="btn btn-primary" id="player1-submit" type="submit">Submit</button>
+                        
+                        <h5 id="player1-wins"></h5>
+                        <h5 id="player1-losses"></h5>
                     </form>
                     </div>
                 </div>
+                
+                
             </div>
 
             <!-- Result Panel -->
@@ -91,6 +99,9 @@
                 <div class="card card-default">
                     <div class="card-header">Player #2</div>
                     <div class="card-body">
+
+                    <div id="player2-selected"></div>
+
                     <form>
 
                         <div class="form-group row">
@@ -116,11 +127,29 @@
                             </label>
                         </div>
                         <button class="btn btn-primary" id="player2-submit" type="submit">Submit</button>
+                        
+                        <h5 id="player2-wins"></h5>
+                        <h5 id="player2-losses"></h5>
                     </form>
                     </div>
                 </div>
             </div>
 
+        </div>
+        <br>
+        <div class="row">
+            
+            <!-- Result Panel -->
+            <div class="col-lg-12">
+                <div class="card card-default">
+                    <div class="card-header">Chat Room</div>
+                    <div class="card-body">
+                        <div id="chat-placehold"></div>
+                        <input class="form-control" id="chat-input-box" type="text">
+                        <button class="btn btn-primary" id="chat-submit" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
         </div>
     
 
@@ -140,5 +169,6 @@
     
 
     <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/chat.js"></script>
   </body>
 </html>

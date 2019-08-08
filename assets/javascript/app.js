@@ -1,7 +1,8 @@
-// To make the program initiates when two users has made
-// their selections.
-var player1Ready = false;
-var player2Ready = false;
+var player1Wins = 0;
+var player1Losses = 0;
+var player2Wins = 0;
+var player2Losses = 0;
+
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -19,48 +20,17 @@ firebase.initializeApp(firebaseConfig);
 // Create a variable to reference the database.
 var database = firebase.database();
 
-/* ------------------------------------------------------------------------------------------------ */
-// connectionsRef references a specific location in our database.
-// All of our connections will be stored in this directory.
-var connectionsRef = database.ref("/connections");
-
-// '.info/connected' is a special location provided by Firebase that is updated
-// every time the client's connection state changes.
-// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
-var connectedRef = database.ref(".info/connected");
-
-// When the client's connection state changes...
-connectedRef.on("value", function(snap) {
-
-  // If they are connected..
-  if (snap.val()) {
-
-    // Add user to the connections list.
-    var con = connectionsRef.push(true);
-    // Remove user from the connection list when they disconnect.
-    con.onDisconnect().remove();
-  }
+database.ref("/player-data/player1-data").set({
+    name: "",
+    selection: "",
+    player1Ready: false
 });
 
-// When first loaded or when the connections list changes...
-connectionsRef.on("value", function(snap) {
-
-    // Display the viewer count in the html.
-    // The number of online users is the number of children in the connections list.
-    $("#number-of-players").text(snap.numChildren());
-  });
-  
-
-/* ------------------------------------------------------------------------------------------------ */
-
-function gameReadyDetector() {
-    if(player1Ready && player2Ready) {
-        initializeGame();
-    } else {
-        console.log("Not enough input to start the game");
-    }
-}
-
+database.ref("/player-data/player2-data").set({
+    name: "",
+    selection: "",
+    player2Ready: false
+});
 
 
 
@@ -69,7 +39,9 @@ function gameReadyDetector() {
 // after ducument is loaded.
 $(document).ready(function() {
     
-    // 서브밋 버튼을 누르면 플레이어 원이나 투가 있나 없냐에 따라서 update가 달라진다.
+
+    
+
     $("#player1-submit").on("click", function(event) {
         event.preventDefault();
         
@@ -81,12 +53,16 @@ $(document).ready(function() {
         // Saving the user data into the firebase database
         database.ref("/player-data/player1-data").set({
             name: player1Name,
-            selection: player1Select
+            selection: player1Select,
+            player1Ready: true
         });
+
+        //$("#player1-selected").clear();
+        $("#player1-selected").append("<h4>" + player1Name + " chose " + player1Select + "</h4>");
       
     
-        player1Ready = true;
-        gameReadyDetector();
+        
+        
     
     });
 
@@ -101,42 +77,30 @@ $(document).ready(function() {
         // Saving the user data into the firebase database
         database.ref("/player-data/player2-data").set({
             name: player2Name,
-            selection: player2Select
+            selection: player2Select,
+            player2Ready: true
         });
         
-        player2Ready = true;
-        gameReadyDetector();
+        $("#player2-selected").append("<h4>" + player2Name + " chose " + player2Select + "</h4>");
+        
     
     });    
+
+    // Getting player 1 and player 2 data from Firebase
+    database.ref("/player-data").on("value", function(snapshot) {
+        var player1Ready = snapshot.child("player1-data").val().player1Ready;
+        var player2Ready = snapshot.child("player2-data").val().player2Ready;
+
+        if(player1Ready && player2Ready) {
+            initializeGame();
+        }
+        
+    });
+
     
 });
 
-function gameResult(player1Name, player1Select, player2Name, player2Select) {
-    //$("#game-result").clear();
-    var gameTag = $("<h4>");
 
-    if(player1Select === player2Select) {
-        //console.log("Game Draw!");
-        gameTag.text("Game Draw!");
-
-
-    } else {
-        if((player1Select === 'rock' && player2Select === 'scissor') ||
-           (player1Select === 'scissor' && player2Select === 'paper') ||
-           (player1Select === 'paper' && player2Select === 'rock')) {
-            
-            //console.log("Player 1 win!");
-            gameTag.text(player1Name + " wins!");
-        } else {
-            
-            //console.log("Player 2 win!");
-            gameTag.text(player2Name + " wins!");
-        }
-    }
-
-    $("#game-result").append(gameTag);
-}
-  
 function initializeGame() {
     console.log("initializaing the game");
     
@@ -155,3 +119,50 @@ function initializeGame() {
     
     
 }
+
+
+function gameResult(player1Name, player1Select, player2Name, player2Select) {
+    console.log("gameResult() called");
+    var gameTag = $("<h4>");
+
+    if(player1Select === player2Select) {
+        //console.log("Game Draw!");
+        gameTag.text("Game Draw!");
+
+
+    } else {
+        if((player1Select === 'rock' && player2Select === 'scissor') ||
+           (player1Select === 'scissor' && player2Select === 'paper') ||
+           (player1Select === 'paper' && player2Select === 'rock')) {
+            
+            gameTag.text(player1Name + " wins!");
+            player1Wins++;
+            player2Losses++;
+    
+        } else {
+            gameTag.text(player2Name + " wins!");
+            player2Wins++;
+            player1Losses++;
+
+        }
+
+        $("#player1-wins").text("Wins: " + player1Wins);
+        $("#player1-losses").text("Losses: " + player1Losses);
+
+        $("#player2-wins").text("Wins: " + player2Wins);
+        $("#player2-losses").text("Losses: " + player2Losses);
+        
+    }
+    $("#game-result").append(gameTag).append("<button id='current-opponent'>Try Again with Current Oppnent</button>").append("<button id='new-opponent'>Quit</button>");
+    $("#current-opponent").click(function() {
+        console.log("Current");
+
+    
+    })
+    
+    
+
+}
+
+
+
