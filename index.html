@@ -27,137 +27,170 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-    <div class="container">
-        <br>
-    
-        <!-- Jumbotron Title -->
-        <div class="jumbotron">
-            <h1 class="text-center">Welcome to RPS-Multiplayer</h1>
-        </div>
-
-
-        <!-- Name and Selection -->
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card card-default">
-                    <div class="card-header">Player #1</div>
-                    <div class="card-body">
-
-                    <div id="player1-selected"></div>
-                    
-                    <form>
-
-                        <div class="form-group row">
-                            <label for="player1-name">Your Name</label>
-                            <input class="form-control" id="player1-name" type="text">
-                        </div>
-                        
-                        <!-- Rock, Paper, Scissors  -->  
-                        <div class="btn_class">
-                            <label>
-                                <input type="radio" name="player1-test" value="rock" checked>
-                                <img id="rockIcon" src="./assets/images/icons8-rock-100.png">
-                            </label>
-                                  
-                            <label>
-                                <input type="radio" name="player1-test" value="scissor" >
-                                <img id="scissorIcon" src="./assets/images/icons8-cutting-100.png">
-                            </label>
-                            
-                            <label>
-                                <input type="radio" name="player1-test" value="paper" >
-                                <img id="paperIcon" src="./assets/images/icons8-matt-paper-100.png">
-                            </label>
-                        </div>
-
-                        
-
-
-                        <button class="btn btn-primary" id="player1-submit" type="submit">Submit</button>
-                        
-                        <h5 id="player1-wins"></h5>
-                        <h5 id="player1-losses"></h5>
-                    </form>
-                    </div>
+    <div id="sizer">
+        <div class="container">
+            <br>
+        
+            <!-- Jumbotron Title -->
+            <div class="jumbotron">
+                <h1 class="text-center">Welcome to RPS-Multiplayer</h1>
+                
+                <div id="swap-zone"><input id="username" placeholder="Name"/>
+                    <button id="start">Start</button>
                 </div>
-                
-                
+
+                <div id="current-turn"><h2></h2></div>
             </div>
 
-            <!-- Result Panel -->
-            <div class="col-lg-4">
-                <div class="card card-default">
-                    <div class="card-header">Result</div>
-                    <div class="card-body">
-                        <div id="game-result"></div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Name and Selection -->
-            <div class="col-lg-4">
-                <div class="card card-default">
-                    <div class="card-header">Player #2</div>
-                    <div class="card-body">
+            <div id="game-div" class="row">
 
-                    <div id="player2-selected"></div>
-
-                    <form>
-
-                        <div class="form-group row">
-                            <label for="player2-name">Your Name</label>
-                            <input class="form-control" id="player2-name" type="text">
-                        </div>
+                <div class="col-lg-4">
+                    <div class="card card-default">
+                        <div class="card-header">Player #1</div>
+                        <div class="card-body">
+                            <div id="player1">
+                                <h3 id="player1-name">Player1</h3>
+                                <ul></ul>
+                                
+                                <div id="player1-chosen"></div>
+                                
+                                <div class="outcomes">
+                                    <div class="outcome-trackers" id="player1-wins"></div>
+                                    <div class="outcome-trackers" id="player1-losses"></div>
+                                </div>
+                            </div>
+                            <!-- <div id="player1-selected"></div>
                         
-                        <!-- Rock, Paper, Scissors  -->  
-                        <div class="btn_class">
-                            <label>
-                                <input type="radio" name="player2-test" value="rock" checked>
-                                <img id="rockIcon" src="./assets/images/icons8-rock-100.png">
-                            </label>
+                            <form>
+
+                                <div class="form-group row">
+                                    <label for="player1-name">Your Name</label>
+                                    <input class="form-control" id="player1-name" type="text">
+                                </div>
+                                
+                                
+                                <div class="btn_class">
+                                    <label>
+                                        <input type="radio" name="player1-test" value="rock" checked>
+                                        <img id="rockIcon" src="./assets/images/icons8-rock-100.png">
+                                    </label>
+                                        
+                                    <label>
+                                        <input type="radio" name="player1-test" value="scissor" >
+                                        <img id="scissorIcon" src="./assets/images/icons8-cutting-100.png">
+                                    </label>
                                     
-                            <label>
-                                <input type="radio" name="player2-test" value="scissor" >
-                                <img id="scissorIcon" src="./assets/images/icons8-cutting-100.png">
-                            </label>
-                            
-                            <label>
-                                <input type="radio" name="player2-test" value="paper" >
-                                <img id="paperIcon" src="./assets/images/icons8-matt-paper-100.png">
-                            </label>
+                                    <label>
+                                        <input type="radio" name="player1-test" value="paper" >
+                                        <img id="paperIcon" src="./assets/images/icons8-matt-paper-100.png">
+                                    </label>
+                                </div>
+
+                                
+
+
+                                <button class="btn btn-primary" id="player1-submit" type="submit">Submit</button>
+                                
+                                <h5 id="player1-wins"></h5>
+                                <h5 id="player1-losses"></h5>
+                            </form> -->
                         </div>
-                        <button class="btn btn-primary" id="player2-submit" type="submit">Submit</button>
-                        
-                        <h5 id="player2-wins"></h5>
-                        <h5 id="player2-losses"></h5>
-                    </form>
+                    </div>
+                    
+                    
+                </div>
+
+                <!-- Result Panel -->
+                <div class="col-lg-4">
+                    <div class="card card-default">
+                        <div class="card-header">Result</div>
+                        <div class="card-body">
+                            <!-- <div id="game-result"></div> -->
+                            <div id="result"><h2></h2></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Name and Selection -->
+                <div class="col-lg-4">
+                    <div class="card card-default">
+                        <div class="card-header">Player #2</div>
+                        <div class="card-body">
+                            <div id="player2">
+                                <h3 id="player2-name">Player2</h3>
+                                <ul></ul>
+                                
+                                <div id="player2-chosen"></div>
+                                
+                                <div class="outcomes">
+                                    <div class="outcome-trackers" id="player2-wins"></div>
+                                    <div class="outcome-trackers" id="player2-losses"></div>
+                                </div>
+                            </div>
+                            <!-- <div id="player2-selected"></div>
+
+                            <form>
+
+                                <div class="form-group row">
+                                    <label for="player2-name">Your Name</label>
+                                    <input class="form-control" id="player2-name" type="text">
+                                </div>
+                                
+                                <div class="btn_class">
+                                    <label>
+                                        <input type="radio" name="player2-test" value="rock" checked>
+                                        <img id="rockIcon" src="./assets/images/icons8-rock-100.png">
+                                    </label>
+                                            
+                                    <label>
+                                        <input type="radio" name="player2-test" value="scissor" >
+                                        <img id="scissorIcon" src="./assets/images/icons8-cutting-100.png">
+                                    </label>
+                                    
+                                    <label>
+                                        <input type="radio" name="player2-test" value="paper" >
+                                        <img id="paperIcon" src="./assets/images/icons8-matt-paper-100.png">
+                                    </label>
+                                </div>
+                                <button class="btn btn-primary" id="player2-submit" type="submit">Submit</button>
+                                
+                                <h5 id="player2-wins"></h5>
+                                <h5 id="player2-losses"></h5>
+                            </form> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div id='chat' class="row">
+                
+                <!-- Result Panel -->
+                <div class="col-lg-12">
+                    <div class="card card-default">
+                        <div class="card-header">Chat Room</div>
+                        <div class="card-body">
+                            <div id="chat-messages"></div>
+                            <div id="chat-bar">
+                                <input id="chat-input" />
+                                <button id="chat-send">Send</button>
+                            </div>
+                            <!-- <div id="chat-placehold"></div>
+                            <input class="form-control" id="chat-input-box" type="text">
+                            <button class="btn btn-primary" id="chat-submit" type="submit">Submit</button> -->
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-        <br>
-        <div class="row">
-            
-            <!-- Result Panel -->
-            <div class="col-lg-12">
-                <div class="card card-default">
-                    <div class="card-header">Chat Room</div>
-                    <div class="card-body">
-                        <div id="chat-placehold"></div>
-                        <input class="form-control" id="chat-input-box" type="text">
-                        <button class="btn btn-primary" id="chat-submit" type="submit">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-
-
-
         
-    </div>
 
+
+
+            
+        </div>
+    </div>
             
 
 
