@@ -4,10 +4,12 @@
 
 ## Description
  
-* This web application supports two players to play rock paper scissor game. 
+• Rock Paper Scissor game that allows two players to play simultaneously in remote locations.
+• HTML and CSS are used for graphical contents. JavaScript is used to implement features such as saving title list. Firebase is used for storing user input synchronized with the application itself. Deployed through GitHub.
 
-* **This game has not been fully devloped to meet the criteria specified on the instruction.**
-Will modify it later after to meet the instruction.
+
+## Deploy URL
+https://hyeonguw.github.io/RPS-Multiplayer/
 
 ## Authors
 * Hyeong Suk Kim - whddkf2004@gmail.com
