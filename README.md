@@ -5,6 +5,7 @@
 ## Description
  
 • Rock Paper Scissor game that allows two players to play simultaneously in remote locations.
+
 • HTML and CSS are used for graphical contents. JavaScript is used to implement features such as saving title list. Firebase is used for storing user input synchronized with the application itself. Deployed through GitHub.
 
 
